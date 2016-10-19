@@ -19,11 +19,26 @@
 # and when you think it is correct, you can test it with  $ rake 2:2
 
 def hi_hi_goodbye
-  # your code here
+
+def prompt
+puts "Enter a number"
 end
 
+prompt
+response = gets.chomp
 
+while response != "bye"
+	response.to_i.times{ print "hi " }
+	prompt
+	response = gets.chomp
 
+break if response == "bye"
+	
+end
+
+print "goodbye"
+
+end
 
 # This will just invoke the method if you run this program directly
 # This way you can try it out by running "$ ruby 2_input_output_control.rb" 

@@ -5,7 +5,17 @@
 # "abcdefg".every_other_char  # => "aceg"
 # "".every_other_char         # => ""
 
+
 class String
   def every_other_char
+
+    string = ""
+    chars.each_with_index { |letter, index|
+      string << letter if index % 2 == 0
+    }
+    string
   end
 end
+
+
+
