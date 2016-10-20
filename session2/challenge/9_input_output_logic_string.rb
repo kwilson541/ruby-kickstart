@@ -25,10 +25,20 @@
 
 def deaf_grandma
 
+  while response = gets
+  	# whilst a response is being received
+    response = response.chomp
+    
+    break if response == "BYE"
+    # stop is response is BYE
+    if response == response.upcase && response != ""
+    # if response is caps and not a blank line
+      puts "NO, NOT SINCE 1938!"
+    else
+      puts "HUH?! SPEAK UP, SONNY!"
+    end
+  end
 end
-
-
-
 
 
 # This will call your code so you can run it from the terminal.

@@ -18,3 +18,54 @@
 # if the parameter is greater than 99, set the number of beer bottles to 99
 # Then make a public method called print_song that outputs all stanzas from the number of bottles of beer down to zero.
 # Add any additional methods you find helpful.
+
+class BeerSong
+  attr_accessor 'beers'
+
+  def initialize(beers)
+    beers = 0  if beers < 0
+    beers = 99 if beers > 99
+    @beers = beers
+  end
+
+  def print_song
+    beers.downto(1) { |x|
+      print_stanza x
+    }
+    # downto iterates the block until limit is reached (includes limit)
+  end
+
+  def print_stanza(n)
+    if n.zero?
+      String.new
+    else
+      puts "#{translate n} #{bottle n} of beer on the wall,",
+           "#{translate n} #{bottle n} of beer,",
+           "Take one down, pass it around,",
+           "#{translate n - 1} #{bottle n-1} of beer on the wall."
+    end
+  end
+
+  # returns "bottle" or "bottles"
+  def bottle(n)
+    if n == 1 then 'bottle' else 'bottles' end
+  end
+
+  # translates number to English
+  def translate(n)
+    if 0 <= n && n <= 19
+    # if number is between 0-19
+      %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)[n]
+    # creates new word array, values seperated with spaces, value chosen based on number given at end
+    elsif n % 10 == 0
+    # if number is divisible by 10
+      %w(zero ten twenty thirty forty fifty sixty seventy eighty ninety)[n/10]
+    else
+      "#{translate n/10*10}-#{translate n%10}".downcase
+    # for numbers not between 0-19 or divisible by 10, divides by 10 then multiplies by 10 (integers ignore decimals)
+    # number is then converted to text using second array
+    # remainder found for number divided by 10
+    # number is then converted to text using first array
+    end.capitalize
+  end
+end

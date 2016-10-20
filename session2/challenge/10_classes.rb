@@ -16,4 +16,20 @@
 #
 
 class Person
+
+attr_accessor 'name', 'age'
+
+# setting the reader and writer methods for name and age
+
+def initialize(name, age)
+	@name = name
+	@age = age
+	# passes the name and age arguments to the instance variables
+end
+
+def birthday
+	@age =+ 1
+	# this is equivalent to @age = @age + 1
+end
+
 end

@@ -5,3 +5,11 @@
 # got_three? ['a', 'a', 'b']  # => false
 # got_three? ['a', 'a', 'a']  # => true
 # got_three? [1, 2, 1, 1]     # => false
+
+def got_three?(elements)
+	elements.each_cons(3) { |x, y, z|
+	return true if x == y && x == z
+	}
+	return false
+	# return false must be outside the block, otherwise method will not iterate
+end

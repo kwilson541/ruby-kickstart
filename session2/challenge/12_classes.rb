@@ -21,8 +21,34 @@
 # f.to_f               # => 0.5
 
 class Fraction
-  def gcd(a,b)
-    return a if b == 0
-    gcd(b, a%b)
-  end
+
+attr_accessor 'numerator', 'denominator'
+
+def initialize(numerator, denominator)
+    @numerator = numerator
+    @denominator = denominator
 end
+
+def to_s
+	"#{numerator}/#{denominator}"
+	#uses string interpolation to turn the integers into a string
+end
+
+def to_f
+	numerator / denominator.to_f
+	# divides numerator by denominator and turns answer to float
+end
+
+def lowest
+	low = gcd(numerator, denominator)
+	Fraction.new(numerator / low, denominator / low)
+	#finds lowest common divisor, creates new fraction and divides numberator and denominator by this divisor
+end
+
+def gcd(a,b)
+	return a if b == 0
+    gcd(b, a%b)
+end
+
+end
+
